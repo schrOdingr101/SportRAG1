@@ -24,15 +24,17 @@ SportRAG is a question-answering system that combines structured sports data wit
 * `data/` – datasets and generated data
 
 * ## Setup Instructions
+* 
 
 1. Create a PostgreSQL database (e.g., using Supabase)
 2. Run the `schema.sql` file
 3. Ensure pgvector extension is enabled
 
-## Status
-Milestone 1 completed (Schema Design and DDL)
 
 ## Status
 
 Milestone 1 completed (Schema Design and DDL)
 # SportRAG1
+
+## Author
+[Simeon Mudenda & Patrick Muchindu]

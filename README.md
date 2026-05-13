@@ -88,6 +88,24 @@ Run:
 
 ```sql
 schema.sql
+```
+## Query Suite
+
+The `queries.sql` file contains analytical SQL queries demonstrating:
+
+- Aggregations
+- Joins
+- Subqueries
+- Common Table Expressions (CTEs)
+- Window Functions
+
+Example analyses include:
+- Top goal scorers
+- Assist rankings
+- Team goal statistics
+- Running goal totals
+- Player activity analysis
+
 ## Tech Stack
 
 * PostgreSQL (Supabase)

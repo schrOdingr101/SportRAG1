@@ -4,6 +4,90 @@
 
 SportRAG is a question-answering system that combines structured sports data with unstructured match reports using a Retrieval-Augmented Generation (RAG) pipeline.
 
+## Dataset Information
+
+The SportRAG dataset simulates football match analytics data across multiple leagues and teams.  
+Data was generated programmatically using Python, Faker, and PostgreSQL.
+
+### Dataset Tables
+
+| Table | Description |
+|---|---|
+| Teams | Stores football teams and league information |
+| Players | Stores player details and team affiliations |
+| Matches | Stores football match results |
+| PlayerStats | Stores player performance statistics per match |
+| Documents | Stores generated match reports for RAG retrieval |
+| Embeddings | Stores vector embeddings for semantic search |
+
+### Total Dataset Size
+
+- Teams: 10 rows
+- Players: 150 rows
+- Matches: 100 rows
+- PlayerStats: 972 rows
+- Documents: 100 rows
+
+Total rows exceed the 1000-row minimum requirement.
+
+## Data Dictionary
+
+### Teams
+
+| Column | Type | Description |
+|---|---|---|
+| team_id | SERIAL | Primary key |
+| name | VARCHAR | Team name |
+| league | VARCHAR | League name |
+
+### Players
+
+| Column | Type | Description |
+|---|---|---|
+| player_id | SERIAL | Primary key |
+| name | VARCHAR | Player name |
+| position | VARCHAR | Playing position |
+| team_id | INT | Foreign key referencing Teams |
+
+### Matches
+
+| Column | Type | Description |
+|---|---|---|
+| match_id | SERIAL | Primary key |
+| date | DATE | Match date |
+| home_team_id | INT | Home team |
+| away_team_id | INT | Away team |
+| home_score | INT | Goals scored by home team |
+| away_score | INT | Goals scored by away team |
+
+### PlayerStats
+
+| Column | Type | Description |
+|---|---|---|
+| stat_id | SERIAL | Primary key |
+| player_id | INT | Foreign key referencing Players |
+| match_id | INT | Foreign key referencing Matches |
+| goals | INT | Goals scored |
+| assists | INT | Assists made |
+| minutes_played | INT | Minutes played |
+
+### Documents
+
+| Column | Type | Description |
+|---|---|---|
+| doc_id | SERIAL | Primary key |
+| match_id | INT | Foreign key referencing Matches |
+| content | TEXT | Match report text |
+| source | VARCHAR | Source of report |
+
+## Import Instructions
+
+### 1. Create Database Schema
+
+Run:
+
+```sql
+schema.sql
 ## Tech Stack
 
 * PostgreSQL (Supabase)

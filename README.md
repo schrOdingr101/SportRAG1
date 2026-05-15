@@ -1,3 +1,5 @@
+https://github.com/schrOdingr101/SportRAG1
+
 # SportRAG: Retrieval-Augmented Sports Analytics System
 
 ## Description
@@ -139,4 +141,4 @@ Milestone 1 completed (Schema Design and DDL)
 # SportRAG1
 
 ## Author
-[Simeon Mudenda & Patrick Muchindu]
+[Simeon Mudenda, Patrick Muchindu & Sarim]

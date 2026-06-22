@@ -138,7 +138,7 @@ Example analyses include:
 ## Status
 
 Milestone 1 completed (Schema Design and DDL)
-# SportRAG1
+
 
 ---
 

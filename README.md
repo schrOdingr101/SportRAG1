@@ -24,13 +24,13 @@ Data was generated programmatically using Python, Faker, and PostgreSQL.
 
 ### Total Dataset Size
 
-- Teams: 10 rows
-- Players: 150 rows
-- Matches: 100 rows
-- PlayerStats: 972 rows
-- Documents: 100 rows
+- Teams: 20 rows
+- Players: 1000 rows
+- Matches: 1000 rows
+- PlayerStats: 12000 rows
+- Documents: 1000 rows
 
-Total rows exceed the 1000-row minimum requirement.
+Total rows exceed the 14000-rows after milestone 2.
 
 ## Data Dictionary
 
@@ -140,5 +140,183 @@ Example analyses include:
 Milestone 1 completed (Schema Design and DDL)
 # SportRAG1
 
-## Author
-[Simeon Mudenda, Patrick Muchindu & Sarim]
+---
+
+# Milestone 2: Data Generation and Advanced SQL
+
+## Data Generation
+
+A synthetic football analytics dataset was generated programmatically using Python and the Faker library.
+
+### Final Dataset Size
+
+| Table | Records |
+|---------|---------:|
+| Teams | 20 |
+| Players | 500 |
+| Matches | 1000 |
+| PlayerStats | 12000 |
+| Documents | 1000 |
+
+Total dataset size exceeds 14,000 records.
+
+### Data Generation Tools
+
+- Python
+- Faker
+- PostgreSQL
+- psycopg2
+
+The dataset was generated automatically to simulate realistic football analytics data while maintaining referential integrity between tables.
+
+---
+
+## Advanced SQL Queries
+
+The project implements advanced SQL functionality including:
+
+### Joins and Aggregations
+
+- Top Goal Scorers
+- Top Assist Providers
+- Team Goal Statistics
+
+### Subqueries
+
+- Players Above Average Goals
+- Teams With More Than 10 Goals
+
+### Common Table Expressions (CTEs)
+
+- Average Goals Per Team
+- Most Active Players
+
+### Window Functions
+
+- Player Goal Rankings
+- Running Goal Totals
+
+### Text Search
+
+- Match Report Keyword Search
+
+The complete implementations can be found in:
+
+```text
+queries.sql
+```
+
+---
+
+# Milestone 3: Performance Optimization
+
+## Query Analysis
+
+Performance evaluation was conducted using PostgreSQL's EXPLAIN ANALYZE command.
+
+Three representative analytical queries were selected and evaluated before and after indexing.
+
+### Performance Results
+
+| Query | Before Optimization | After Optimization |
+|---------|---------:|---------:|
+| Top Goal Scorers | 13.46 ms | 12.04 ms |
+| Teams With More Than 10 Goals | 19.07 ms | 11.03 ms |
+| Player Rankings | 7.78 ms | 7.71 ms |
+
+### Indexes Implemented
+
+```sql
+CREATE INDEX idx_playerstats_player
+ON PlayerStats(player_id);
+
+CREATE INDEX idx_players_team
+ON Players(team_id);
+
+CREATE INDEX idx_playerstats_goals
+ON PlayerStats(goals);
+```
+
+### Outcome
+
+The indexing strategy improved query execution times by reducing sequential scans and improving join efficiency.
+
+The largest improvement was observed in the team goal aggregation query, which improved by approximately 42%.
+
+---
+
+# Milestone 4: Trigger, Frontend and Retrieval System
+
+## Trigger Implementation
+
+A trigger was implemented to automatically calculate player ratings whenever a PlayerStats record is inserted or updated.
+
+### Rating Formula
+
+```text
+rating =
+(goals × 2)
++ (assists × 1.5)
++ (minutes_played / 90)
+```
+
+### Benefits
+
+- Automatic calculation
+- Improved consistency
+- Reduced manual processing
+- Business logic enforced within the database
+
+---
+
+## Frontend Dashboard
+
+A frontend dashboard was developed to interact with the database.
+
+### Features
+
+- Team statistics
+- Player statistics
+- Match analytics
+- Top scorer rankings
+- Match report retrieval
+- Natural language query interface
+
+The dashboard allows users to explore football analytics without directly writing SQL queries.
+
+---
+
+## Retrieval-Augmented Generation (RAG)
+
+SportRAG combines:
+
+### Structured Data
+
+- Teams
+- Players
+- Matches
+- PlayerStats
+
+### Unstructured Data
+
+- Match Reports
+- Documents
+
+This architecture provides the foundation for future semantic search and AI-powered sports question answering.
+
+---
+
+## Future Work
+
+Planned improvements include:
+
+- Integration with real football APIs (SofaScore, FotMob, StatsBomb)
+- pgvector-based semantic search
+- Large Language Model integration
+- Natural language to SQL conversion
+- Real-time football analytics
+
+---
+
+## Authors
+[Simeon Mudenda, Patrick Muchindu & Sarim Rouf]
